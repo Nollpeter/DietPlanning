@@ -462,7 +462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DietPlanningEntitiesModel" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DietPlanningEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carbohydrate" EntityType="Self.Carbohydrate" />
           <EntitySet Name="Energy" EntityType="Self.Energy" />
           <EntitySet Name="Fat" EntityType="Self.Fat" />
@@ -501,7 +501,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DietPlanningModelStoreContainer" CdmEntityContainer="DietPlanningEntitiesModel">
+        <EntityContainerMapping StorageEntityContainer="DietPlanningModelStoreContainer" CdmEntityContainer="DietPlanningEntities">
           <EntitySetMapping Name="Carbohydrate">
             <EntityTypeMapping TypeName="DietPlanningModel.Carbohydrate">
               <MappingFragment StoreEntitySet="Carbohydrate">
@@ -658,6 +658,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
