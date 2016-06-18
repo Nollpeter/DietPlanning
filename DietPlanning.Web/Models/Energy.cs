@@ -14,9 +14,10 @@ namespace DietPlanning.Web.Models
     
     public partial class Energy
     {
-        public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
         public Nullable<double> Kj { get; set; }
         public Nullable<double> Calories { get; set; }
+        public int FoodId { get; set; }
+    
+        public virtual Food Food { get; set; }
     }
 }

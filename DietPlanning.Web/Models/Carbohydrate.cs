@@ -15,7 +15,7 @@ namespace DietPlanning.Web.Models
     public partial class Carbohydrate
     {
         public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
+        public int FoodId { get; set; }
         public Nullable<double> BaseCarboHydrate { get; set; }
         public Nullable<double> BaseDietaryFiber { get; set; }
         public Nullable<double> BaseStarch { get; set; }

@@ -15,7 +15,7 @@ namespace DietPlanning.Web.Models
     public partial class Vitamine
     {
         public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
+        public int FoodId { get; set; }
         public Nullable<double> VitaminA { get; set; }
         public Nullable<double> VitaminC { get; set; }
         public Nullable<double> VitaminD { get; set; }

@@ -208,6 +208,7 @@
     <Compile Include="Models\Minerals.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Nutrient.cs" />
     <Compile Include="Models\Other.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
@@ -295,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\PartialExtensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -17,29 +17,20 @@ namespace DietPlanning.Web.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Food()
         {
-            this.Carbohydrate = new HashSet<Carbohydrate>();
-            this.Fat = new HashSet<Fat>();
-            this.Minerals = new HashSet<Minerals>();
-            this.Other = new HashSet<Other>();
             this.Protein = new HashSet<Protein>();
-            this.Vitamine = new HashSet<Vitamine>();
         }
     
         public string Name { get; set; }
         public int Id { get; set; }
         public Nullable<int> Category { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Carbohydrate> Carbohydrate { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fat> Fat { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Minerals> Minerals { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Other> Other { get; set; }
+        public virtual Carbohydrate Carbohydrate { get; set; }
+        public virtual Energy Energy { get; set; }
+        public virtual Fat Fat { get; set; }
+        public virtual Minerals Minerals { get; set; }
+        public virtual Other Other { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Protein> Protein { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vitamine> Vitamine { get; set; }
+        public virtual Vitamine Vitamine { get; set; }
     }
 }

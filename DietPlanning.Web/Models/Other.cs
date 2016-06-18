@@ -15,7 +15,7 @@ namespace DietPlanning.Web.Models
     public partial class Other
     {
         public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
+        public int FoodId { get; set; }
         public Nullable<double> Cholesterol { get; set; }
         public Nullable<double> Phytosterols { get; set; }
         public Nullable<double> BaseAlcohol { get; set; }

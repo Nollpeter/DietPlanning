@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DietPlanningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DietPlanningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Carbohydrate">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="BaseCarboHydrate" Type="float" />
           <Property Name="BaseDietaryFiber" Type="float" />
           <Property Name="BaseStarch" Type="float" />
@@ -24,19 +24,18 @@
         </EntityType>
         <EntityType Name="Energy">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
           <Property Name="Kj" Type="float" />
           <Property Name="Calories" Type="float" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Fat">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="BaseFat" Type="float" />
           <Property Name="BaseSaturatedFat" Type="float" />
           <Property Name="BaseMonounsaturatedFat" Type="float" />
@@ -57,10 +56,10 @@
         </EntityType>
         <EntityType Name="Minerals">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="Calcium" Type="float" />
           <Property Name="Iron" Type="float" />
           <Property Name="Magnesium" Type="float" />
@@ -75,10 +74,10 @@
         </EntityType>
         <EntityType Name="Other">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="Cholesterol" Type="float" />
           <Property Name="Phytosterols" Type="float" />
           <Property Name="BaseAlcohol" Type="float" />
@@ -116,10 +115,10 @@
         </EntityType>
         <EntityType Name="Vitamine">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FoodId" Type="int" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="VitaminA" Type="float" />
           <Property Name="VitaminC" Type="float" />
           <Property Name="VitaminD" Type="float" />
@@ -137,8 +136,8 @@
           <Property Name="Betaine" Type="float" />
         </EntityType>
         <Association Name="Carbohydrate_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Carbohydrate" Type="Self.Carbohydrate" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Carbohydrate" Type="Self.Carbohydrate" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -148,9 +147,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Energy_Food_Id_fk">
+          <End Role="Food" Type="Self.Food" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Energy" Type="Self.Energy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Energy">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fat_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Fat" Type="Self.Fat" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Fat" Type="Self.Fat" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -161,8 +174,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Minerals_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Minerals" Type="Self.Minerals" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Minerals" Type="Self.Minerals" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -173,8 +186,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Other_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Other" Type="Self.Other" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Other" Type="Self.Other" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -197,8 +210,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Vitamine_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Vitamine" Type="Self.Vitamine" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="Vitamine" Type="Self.Vitamine" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -221,6 +234,10 @@
             <End Role="Food" EntitySet="Food" />
             <End Role="Carbohydrate" EntitySet="Carbohydrate" />
           </AssociationSet>
+          <AssociationSet Name="Energy_Food_Id_fk" Association="Self.Energy_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Energy" EntitySet="Energy" />
+          </AssociationSet>
           <AssociationSet Name="Fat_Food_Id_fk" Association="Self.Fat_Food_Id_fk">
             <End Role="Food" EntitySet="Food" />
             <End Role="Fat" EntitySet="Fat" />
@@ -242,17 +259,54 @@
             <End Role="Vitamine" EntitySet="Vitamine" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DietPlanningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DietPlanningEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carbohydrate" EntityType="DietPlanningModel.Carbohydrate" />
+          <EntitySet Name="Energy" EntityType="DietPlanningModel.Energy" />
+          <EntitySet Name="Fat" EntityType="DietPlanningModel.Fat" />
+          <EntitySet Name="Food" EntityType="DietPlanningModel.Food" />
+          <EntitySet Name="Minerals" EntityType="DietPlanningModel.Minerals" />
+          <EntitySet Name="Other" EntityType="DietPlanningModel.Other" />
+          <EntitySet Name="Protein" EntityType="DietPlanningModel.Protein" />
+          <EntitySet Name="Vitamine" EntityType="DietPlanningModel.Vitamine" />
+          <AssociationSet Name="Carbohydrate_Food_Id_fk" Association="DietPlanningModel.Carbohydrate_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Carbohydrate" EntitySet="Carbohydrate" />
+          </AssociationSet>
+          <AssociationSet Name="Energy_Food_Id_fk" Association="DietPlanningModel.Energy_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Energy" EntitySet="Energy" />
+          </AssociationSet>
+          <AssociationSet Name="Fat_Food_Id_fk" Association="DietPlanningModel.Fat_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Fat" EntitySet="Fat" />
+          </AssociationSet>
+          <AssociationSet Name="Minerals_Food_Id_fk" Association="DietPlanningModel.Minerals_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Minerals" EntitySet="Minerals" />
+          </AssociationSet>
+          <AssociationSet Name="Other_Food_Id_fk" Association="DietPlanningModel.Other_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Other" EntitySet="Other" />
+          </AssociationSet>
+          <AssociationSet Name="Protein_Food_Id_fk" Association="DietPlanningModel.Protein_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Protein" EntitySet="Protein" />
+          </AssociationSet>
+          <AssociationSet Name="Vitamine_Food_Id_fk" Association="DietPlanningModel.Vitamine_Food_Id_fk">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="Vitamine" EntitySet="Vitamine" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Carbohydrate">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="BaseCarboHydrate" Type="Double" />
           <Property Name="BaseDietaryFiber" Type="Double" />
           <Property Name="BaseStarch" Type="Double" />
@@ -263,23 +317,23 @@
           <Property Name="Lactose" Type="Double" />
           <Property Name="Maltose" Type="Double" />
           <Property Name="Galactose" Type="Double" />
-          <NavigationProperty Name="Food" Relationship="Self.Carbohydrate_Food_Id_fk" FromRole="Carbohydrate" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Carbohydrate_Food_Id_fk" FromRole="Carbohydrate" ToRole="Food" />
         </EntityType>
         <EntityType Name="Energy">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
           <Property Name="Kj" Type="Double" />
           <Property Name="Calories" Type="Double" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Energy_Food_Id_fk" FromRole="Energy" ToRole="Food" />
         </EntityType>
         <EntityType Name="Fat">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="BaseFat" Type="Double" />
           <Property Name="BaseSaturatedFat" Type="Double" />
           <Property Name="BaseMonounsaturatedFat" Type="Double" />
@@ -289,7 +343,7 @@
           <Property Name="BaseTransPolyenoicFatyAcids" Type="Double" />
           <Property Name="BaseOmega3FattyAcids" Type="Double" />
           <Property Name="BaseOmega6FattyAcids" Type="Double" />
-          <NavigationProperty Name="Food" Relationship="Self.Fat_Food_Id_fk" FromRole="Fat" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Fat_Food_Id_fk" FromRole="Fat" ToRole="Food" />
         </EntityType>
         <EntityType Name="Food">
           <Key>
@@ -298,19 +352,20 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category" Type="Int32" />
-          <NavigationProperty Name="Carbohydrate" Relationship="Self.Carbohydrate_Food_Id_fk" FromRole="Food" ToRole="Carbohydrate" />
-          <NavigationProperty Name="Fat" Relationship="Self.Fat_Food_Id_fk" FromRole="Food" ToRole="Fat" />
-          <NavigationProperty Name="Minerals" Relationship="Self.Minerals_Food_Id_fk" FromRole="Food" ToRole="Minerals" />
-          <NavigationProperty Name="Other" Relationship="Self.Other_Food_Id_fk" FromRole="Food" ToRole="Other" />
-          <NavigationProperty Name="Protein" Relationship="Self.Protein_Food_Id_fk" FromRole="Food" ToRole="Protein" />
-          <NavigationProperty Name="Vitamine" Relationship="Self.Vitamine_Food_Id_fk" FromRole="Food" ToRole="Vitamine" />
+          <NavigationProperty Name="Carbohydrate" Relationship="DietPlanningModel.Carbohydrate_Food_Id_fk" FromRole="Food" ToRole="Carbohydrate" />
+          <NavigationProperty Name="Energy" Relationship="DietPlanningModel.Energy_Food_Id_fk" FromRole="Food" ToRole="Energy" />
+          <NavigationProperty Name="Fat" Relationship="DietPlanningModel.Fat_Food_Id_fk" FromRole="Food" ToRole="Fat" />
+          <NavigationProperty Name="Minerals" Relationship="DietPlanningModel.Minerals_Food_Id_fk" FromRole="Food" ToRole="Minerals" />
+          <NavigationProperty Name="Other" Relationship="DietPlanningModel.Other_Food_Id_fk" FromRole="Food" ToRole="Other" />
+          <NavigationProperty Name="Protein" Relationship="DietPlanningModel.Protein_Food_Id_fk" FromRole="Food" ToRole="Protein" />
+          <NavigationProperty Name="Vitamine" Relationship="DietPlanningModel.Vitamine_Food_Id_fk" FromRole="Food" ToRole="Vitamine" />
         </EntityType>
         <EntityType Name="Minerals">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="Calcium" Type="Double" />
           <Property Name="Iron" Type="Double" />
           <Property Name="Magnesium" Type="Double" />
@@ -322,14 +377,14 @@
           <Property Name="Manganese" Type="Double" />
           <Property Name="Selenium" Type="Double" />
           <Property Name="Fluoride" Type="Double" />
-          <NavigationProperty Name="Food" Relationship="Self.Minerals_Food_Id_fk" FromRole="Minerals" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Minerals_Food_Id_fk" FromRole="Minerals" ToRole="Food" />
         </EntityType>
         <EntityType Name="Other">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="Cholesterol" Type="Double" />
           <Property Name="Phytosterols" Type="Double" />
           <Property Name="BaseAlcohol" Type="Double" />
@@ -337,7 +392,7 @@
           <Property Name="BaseAsh" Type="Double" />
           <Property Name="Caffeine" Type="Double" />
           <Property Name="Theobromine" Type="Double" />
-          <NavigationProperty Name="Food" Relationship="Self.Other_Food_Id_fk" FromRole="Other" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Other_Food_Id_fk" FromRole="Other" ToRole="Food" />
         </EntityType>
         <EntityType Name="Protein">
           <Key>
@@ -365,14 +420,14 @@
           <Property Name="BaseProteinContent" Type="Double" />
           <Property Name="FoodId_" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Food" Relationship="Self.Protein_Food_Id_fk" FromRole="Protein" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Protein_Food_Id_fk" FromRole="Protein" ToRole="Food" />
         </EntityType>
         <EntityType Name="Vitamine">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FoodId" Type="Int32" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="VitaminA" Type="Double" />
           <Property Name="VitaminC" Type="Double" />
           <Property Name="VitaminD" Type="Double" />
@@ -388,11 +443,11 @@
           <Property Name="PantothenicAcid" Type="Double" />
           <Property Name="Choline" Type="Double" />
           <Property Name="Betaine" Type="Double" />
-          <NavigationProperty Name="Food" Relationship="Self.Vitamine_Food_Id_fk" FromRole="Vitamine" ToRole="Food" />
+          <NavigationProperty Name="Food" Relationship="DietPlanningModel.Vitamine_Food_Id_fk" FromRole="Vitamine" ToRole="Food" />
         </EntityType>
         <Association Name="Carbohydrate_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Carbohydrate" Type="Self.Carbohydrate" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1" />
+          <End Type="DietPlanningModel.Carbohydrate" Role="Carbohydrate" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -402,9 +457,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Energy_Food_Id_fk">
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DietPlanningModel.Energy" Role="Energy" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Energy">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fat_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Fat" Type="Self.Fat" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1" />
+          <End Type="DietPlanningModel.Fat" Role="Fat" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -415,8 +484,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Minerals_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Minerals" Type="Self.Minerals" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1" />
+          <End Type="DietPlanningModel.Minerals" Role="Minerals" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -427,8 +496,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Other_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Other" Type="Self.Other" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1" />
+          <End Type="DietPlanningModel.Other" Role="Other" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -439,8 +508,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Protein_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Protein" Type="Self.Protein" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="0..1" />
+          <End Type="DietPlanningModel.Protein" Role="Protein" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -451,8 +520,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Vitamine_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Vitamine" Type="Self.Vitamine" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1" />
+          <End Type="DietPlanningModel.Vitamine" Role="Vitamine" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -462,41 +531,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DietPlanningEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Carbohydrate" EntityType="Self.Carbohydrate" />
-          <EntitySet Name="Energy" EntityType="Self.Energy" />
-          <EntitySet Name="Fat" EntityType="Self.Fat" />
-          <EntitySet Name="Food" EntityType="Self.Food" />
-          <EntitySet Name="Minerals" EntityType="Self.Minerals" />
-          <EntitySet Name="Other" EntityType="Self.Other" />
-          <EntitySet Name="Protein" EntityType="Self.Protein" />
-          <EntitySet Name="Vitamine" EntityType="Self.Vitamine" />
-          <AssociationSet Name="Carbohydrate_Food_Id_fk" Association="Self.Carbohydrate_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Carbohydrate" EntitySet="Carbohydrate" />
-          </AssociationSet>
-          <AssociationSet Name="Fat_Food_Id_fk" Association="Self.Fat_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Fat" EntitySet="Fat" />
-          </AssociationSet>
-          <AssociationSet Name="Minerals_Food_Id_fk" Association="Self.Minerals_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Minerals" EntitySet="Minerals" />
-          </AssociationSet>
-          <AssociationSet Name="Other_Food_Id_fk" Association="Self.Other_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Other" EntitySet="Other" />
-          </AssociationSet>
-          <AssociationSet Name="Protein_Food_Id_fk" Association="Self.Protein_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Protein" EntitySet="Protein" />
-          </AssociationSet>
-          <AssociationSet Name="Vitamine_Food_Id_fk" Association="Self.Vitamine_Food_Id_fk">
-            <End Role="Food" EntitySet="Food" />
-            <End Role="Vitamine" EntitySet="Vitamine" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -505,139 +540,138 @@
           <EntitySetMapping Name="Carbohydrate">
             <EntityTypeMapping TypeName="DietPlanningModel.Carbohydrate">
               <MappingFragment StoreEntitySet="Carbohydrate">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="BaseCarboHydrate" ColumnName="BaseCarboHydrate" />
-                <ScalarProperty Name="BaseDietaryFiber" ColumnName="BaseDietaryFiber" />
-                <ScalarProperty Name="BaseStarch" ColumnName="BaseStarch" />
-                <ScalarProperty Name="BaseSugars" ColumnName="BaseSugars" />
-                <ScalarProperty Name="Sucrose" ColumnName="Sucrose" />
-                <ScalarProperty Name="Glucose" ColumnName="Glucose" />
-                <ScalarProperty Name="Fructose" ColumnName="Fructose" />
-                <ScalarProperty Name="Lactose" ColumnName="Lactose" />
-                <ScalarProperty Name="Maltose" ColumnName="Maltose" />
                 <ScalarProperty Name="Galactose" ColumnName="Galactose" />
+                <ScalarProperty Name="Maltose" ColumnName="Maltose" />
+                <ScalarProperty Name="Lactose" ColumnName="Lactose" />
+                <ScalarProperty Name="Fructose" ColumnName="Fructose" />
+                <ScalarProperty Name="Glucose" ColumnName="Glucose" />
+                <ScalarProperty Name="Sucrose" ColumnName="Sucrose" />
+                <ScalarProperty Name="BaseSugars" ColumnName="BaseSugars" />
+                <ScalarProperty Name="BaseStarch" ColumnName="BaseStarch" />
+                <ScalarProperty Name="BaseDietaryFiber" ColumnName="BaseDietaryFiber" />
+                <ScalarProperty Name="BaseCarboHydrate" ColumnName="BaseCarboHydrate" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Energy">
             <EntityTypeMapping TypeName="DietPlanningModel.Energy">
               <MappingFragment StoreEntitySet="Energy">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="Kj" ColumnName="Kj" />
                 <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Kj" ColumnName="Kj" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fat">
             <EntityTypeMapping TypeName="DietPlanningModel.Fat">
               <MappingFragment StoreEntitySet="Fat">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="BaseFat" ColumnName="BaseFat" />
-                <ScalarProperty Name="BaseSaturatedFat" ColumnName="BaseSaturatedFat" />
-                <ScalarProperty Name="BaseMonounsaturatedFat" ColumnName="BaseMonounsaturatedFat" />
-                <ScalarProperty Name="BasePolyunsaturatedFat" ColumnName="BasePolyunsaturatedFat" />
-                <ScalarProperty Name="BaseTransFattyAcids" ColumnName="BaseTransFattyAcids" />
-                <ScalarProperty Name="BaseTransMonoenoicFatyAcids" ColumnName="BaseTransMonoenoicFatyAcids" />
-                <ScalarProperty Name="BaseTransPolyenoicFatyAcids" ColumnName="BaseTransPolyenoicFatyAcids" />
-                <ScalarProperty Name="BaseOmega3FattyAcids" ColumnName="BaseOmega3FattyAcids" />
                 <ScalarProperty Name="BaseOmega6FattyAcids" ColumnName="BaseOmega6FattyAcids" />
+                <ScalarProperty Name="BaseOmega3FattyAcids" ColumnName="BaseOmega3FattyAcids" />
+                <ScalarProperty Name="BaseTransPolyenoicFatyAcids" ColumnName="BaseTransPolyenoicFatyAcids" />
+                <ScalarProperty Name="BaseTransMonoenoicFatyAcids" ColumnName="BaseTransMonoenoicFatyAcids" />
+                <ScalarProperty Name="BaseTransFattyAcids" ColumnName="BaseTransFattyAcids" />
+                <ScalarProperty Name="BasePolyunsaturatedFat" ColumnName="BasePolyunsaturatedFat" />
+                <ScalarProperty Name="BaseMonounsaturatedFat" ColumnName="BaseMonounsaturatedFat" />
+                <ScalarProperty Name="BaseSaturatedFat" ColumnName="BaseSaturatedFat" />
+                <ScalarProperty Name="BaseFat" ColumnName="BaseFat" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Food">
             <EntityTypeMapping TypeName="DietPlanningModel.Food">
               <MappingFragment StoreEntitySet="Food">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Minerals">
             <EntityTypeMapping TypeName="DietPlanningModel.Minerals">
               <MappingFragment StoreEntitySet="Minerals">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="Calcium" ColumnName="Calcium" />
-                <ScalarProperty Name="Iron" ColumnName="Iron" />
-                <ScalarProperty Name="Magnesium" ColumnName="Magnesium" />
-                <ScalarProperty Name="Phosphorus" ColumnName="Phosphorus" />
-                <ScalarProperty Name="Potassium" ColumnName="Potassium" />
-                <ScalarProperty Name="Sodium" ColumnName="Sodium" />
-                <ScalarProperty Name="Zinc" ColumnName="Zinc" />
-                <ScalarProperty Name="Copper" ColumnName="Copper" />
-                <ScalarProperty Name="Manganese" ColumnName="Manganese" />
-                <ScalarProperty Name="Selenium" ColumnName="Selenium" />
                 <ScalarProperty Name="Fluoride" ColumnName="Fluoride" />
+                <ScalarProperty Name="Selenium" ColumnName="Selenium" />
+                <ScalarProperty Name="Manganese" ColumnName="Manganese" />
+                <ScalarProperty Name="Copper" ColumnName="Copper" />
+                <ScalarProperty Name="Zinc" ColumnName="Zinc" />
+                <ScalarProperty Name="Sodium" ColumnName="Sodium" />
+                <ScalarProperty Name="Potassium" ColumnName="Potassium" />
+                <ScalarProperty Name="Phosphorus" ColumnName="Phosphorus" />
+                <ScalarProperty Name="Magnesium" ColumnName="Magnesium" />
+                <ScalarProperty Name="Iron" ColumnName="Iron" />
+                <ScalarProperty Name="Calcium" ColumnName="Calcium" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Other">
             <EntityTypeMapping TypeName="DietPlanningModel.Other">
               <MappingFragment StoreEntitySet="Other">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="Cholesterol" ColumnName="Cholesterol" />
-                <ScalarProperty Name="Phytosterols" ColumnName="Phytosterols" />
-                <ScalarProperty Name="BaseAlcohol" ColumnName="BaseAlcohol" />
-                <ScalarProperty Name="BaseWater" ColumnName="BaseWater" />
-                <ScalarProperty Name="BaseAsh" ColumnName="BaseAsh" />
-                <ScalarProperty Name="Caffeine" ColumnName="Caffeine" />
                 <ScalarProperty Name="Theobromine" ColumnName="Theobromine" />
+                <ScalarProperty Name="Caffeine" ColumnName="Caffeine" />
+                <ScalarProperty Name="BaseAsh" ColumnName="BaseAsh" />
+                <ScalarProperty Name="BaseWater" ColumnName="BaseWater" />
+                <ScalarProperty Name="BaseAlcohol" ColumnName="BaseAlcohol" />
+                <ScalarProperty Name="Phytosterols" ColumnName="Phytosterols" />
+                <ScalarProperty Name="Cholesterol" ColumnName="Cholesterol" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Protein">
             <EntityTypeMapping TypeName="DietPlanningModel.Protein">
               <MappingFragment StoreEntitySet="Protein">
-                <ScalarProperty Name="Threonine" ColumnName="Threonine" />
-                <ScalarProperty Name="Tryptophan" ColumnName="Tryptophan" />
-                <ScalarProperty Name="Isoleucine" ColumnName="Isoleucine" />
-                <ScalarProperty Name="Leucine" ColumnName="Leucine" />
-                <ScalarProperty Name="Lysine" ColumnName="Lysine" />
-                <ScalarProperty Name="Serine" ColumnName="Serine" />
-                <ScalarProperty Name="Proline" ColumnName="Proline" />
-                <ScalarProperty Name="GlutamicAcid" ColumnName="GlutamicAcid" />
-                <ScalarProperty Name="AsparticAcid" ColumnName="AsparticAcid" />
-                <ScalarProperty Name="Alanine" ColumnName="Alanine" />
-                <ScalarProperty Name="Glycine" ColumnName="Glycine" />
-                <ScalarProperty Name="Histidine" ColumnName="Histidine" />
-                <ScalarProperty Name="Arginine" ColumnName="Arginine" />
-                <ScalarProperty Name="Valine" ColumnName="Valine" />
-                <ScalarProperty Name="Phenylalanine" ColumnName="Phenylalanine" />
-                <ScalarProperty Name="Tyrosine" ColumnName="Tyrosine" />
-                <ScalarProperty Name="Cystine" ColumnName="Cystine" />
-                <ScalarProperty Name="Methionine" ColumnName="Methionine" />
-                <ScalarProperty Name="HydroxyProline" ColumnName="HydroxyProline" />
-                <ScalarProperty Name="BaseProteinContent" ColumnName="BaseProteinContent" />
-                <ScalarProperty Name="FoodId_" ColumnName="FoodId " />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FoodId_" ColumnName="FoodId " />
+                <ScalarProperty Name="BaseProteinContent" ColumnName="BaseProteinContent" />
+                <ScalarProperty Name="HydroxyProline" ColumnName="HydroxyProline" />
+                <ScalarProperty Name="Methionine" ColumnName="Methionine" />
+                <ScalarProperty Name="Cystine" ColumnName="Cystine" />
+                <ScalarProperty Name="Tyrosine" ColumnName="Tyrosine" />
+                <ScalarProperty Name="Phenylalanine" ColumnName="Phenylalanine" />
+                <ScalarProperty Name="Valine" ColumnName="Valine" />
+                <ScalarProperty Name="Arginine" ColumnName="Arginine" />
+                <ScalarProperty Name="Histidine" ColumnName="Histidine" />
+                <ScalarProperty Name="Glycine" ColumnName="Glycine" />
+                <ScalarProperty Name="Alanine" ColumnName="Alanine" />
+                <ScalarProperty Name="AsparticAcid" ColumnName="AsparticAcid" />
+                <ScalarProperty Name="GlutamicAcid" ColumnName="GlutamicAcid" />
+                <ScalarProperty Name="Proline" ColumnName="Proline" />
+                <ScalarProperty Name="Serine" ColumnName="Serine" />
+                <ScalarProperty Name="Lysine" ColumnName="Lysine" />
+                <ScalarProperty Name="Leucine" ColumnName="Leucine" />
+                <ScalarProperty Name="Isoleucine" ColumnName="Isoleucine" />
+                <ScalarProperty Name="Tryptophan" ColumnName="Tryptophan" />
+                <ScalarProperty Name="Threonine" ColumnName="Threonine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vitamine">
             <EntityTypeMapping TypeName="DietPlanningModel.Vitamine">
               <MappingFragment StoreEntitySet="Vitamine">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="VitaminA" ColumnName="VitaminA" />
-                <ScalarProperty Name="VitaminC" ColumnName="VitaminC" />
-                <ScalarProperty Name="VitaminD" ColumnName="VitaminD" />
-                <ScalarProperty Name="VitaminE1" ColumnName="VitaminE" />
-                <ScalarProperty Name="VitaminK" ColumnName="VitaminK" />
-                <ScalarProperty Name="VitaminB6" ColumnName="VitaminB6" />
-                <ScalarProperty Name="VitaminB12" ColumnName="VitaminB12" />
-                <ScalarProperty Name="Thiamin" ColumnName="Thiamin" />
-                <ScalarProperty Name="Riboflavin" ColumnName="Riboflavin" />
-                <ScalarProperty Name="Niacin" ColumnName="Niacin" />
-                <ScalarProperty Name="Folate" ColumnName="Folate" />
-                <ScalarProperty Name="FolicAcid" ColumnName="FolicAcid" />
-                <ScalarProperty Name="PantothenicAcid" ColumnName="PantothenicAcid" />
-                <ScalarProperty Name="Choline" ColumnName="Choline" />
                 <ScalarProperty Name="Betaine" ColumnName="Betaine" />
+                <ScalarProperty Name="Choline" ColumnName="Choline" />
+                <ScalarProperty Name="PantothenicAcid" ColumnName="PantothenicAcid" />
+                <ScalarProperty Name="FolicAcid" ColumnName="FolicAcid" />
+                <ScalarProperty Name="Folate" ColumnName="Folate" />
+                <ScalarProperty Name="Niacin" ColumnName="Niacin" />
+                <ScalarProperty Name="Riboflavin" ColumnName="Riboflavin" />
+                <ScalarProperty Name="Thiamin" ColumnName="Thiamin" />
+                <ScalarProperty Name="VitaminB12" ColumnName="VitaminB12" />
+                <ScalarProperty Name="VitaminB6" ColumnName="VitaminB6" />
+                <ScalarProperty Name="VitaminK" ColumnName="VitaminK" />
+                <ScalarProperty Name="VitaminE1" ColumnName="VitaminE" />
+                <ScalarProperty Name="VitaminD" ColumnName="VitaminD" />
+                <ScalarProperty Name="VitaminC" ColumnName="VitaminC" />
+                <ScalarProperty Name="VitaminA" ColumnName="VitaminA" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -15,7 +15,7 @@ namespace DietPlanning.Web.Models
     public partial class Fat
     {
         public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
+        public int FoodId { get; set; }
         public Nullable<double> BaseFat { get; set; }
         public Nullable<double> BaseSaturatedFat { get; set; }
         public Nullable<double> BaseMonounsaturatedFat { get; set; }

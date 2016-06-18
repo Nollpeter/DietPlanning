@@ -15,7 +15,7 @@ namespace DietPlanning.Web.Models
     public partial class Minerals
     {
         public int Id { get; set; }
-        public Nullable<int> FoodId { get; set; }
+        public int FoodId { get; set; }
         public Nullable<double> Calcium { get; set; }
         public Nullable<double> Iron { get; set; }
         public Nullable<double> Magnesium { get; set; }
