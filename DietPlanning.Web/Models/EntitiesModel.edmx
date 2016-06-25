@@ -88,7 +88,7 @@
         </EntityType>
         <EntityType Name="Protein">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId " />
           </Key>
           <Property Name="Threonine" Type="float" />
           <Property Name="Tryptophan" Type="float" />
@@ -110,8 +110,7 @@
           <Property Name="Methionine" Type="float" />
           <Property Name="HydroxyProline" Type="float" />
           <Property Name="BaseProteinContent" Type="float" />
-          <Property Name="FoodId " Type="int" />
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodId " Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Vitamine">
           <Key>
@@ -198,8 +197,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Protein_Food_Id_fk">
-          <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
-          <End Role="Protein" Type="Self.Protein" Multiplicity="*" />
+          <End Role="Food" Type="Self.Food" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Protein" Type="Self.Protein" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -396,7 +397,7 @@
         </EntityType>
         <EntityType Name="Protein">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="FoodId_" />
           </Key>
           <Property Name="Threonine" Type="Double" />
           <Property Name="Tryptophan" Type="Double" />
@@ -418,8 +419,7 @@
           <Property Name="Methionine" Type="Double" />
           <Property Name="HydroxyProline" Type="Double" />
           <Property Name="BaseProteinContent" Type="Double" />
-          <Property Name="FoodId_" Type="Int32" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodId_" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Food" Relationship="DietPlanningModel.Protein_Food_Id_fk" FromRole="Protein" ToRole="Food" />
         </EntityType>
         <EntityType Name="Vitamine">
@@ -508,8 +508,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Protein_Food_Id_fk">
-          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="0..1" />
-          <End Type="DietPlanningModel.Protein" Role="Protein" Multiplicity="*" />
+          <End Type="DietPlanningModel.Food" Role="Food" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DietPlanningModel.Protein" Role="Protein" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Food">
               <PropertyRef Name="Id" />
@@ -627,7 +629,6 @@
           <EntitySetMapping Name="Protein">
             <EntityTypeMapping TypeName="DietPlanningModel.Protein">
               <MappingFragment StoreEntitySet="Protein">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FoodId_" ColumnName="FoodId " />
                 <ScalarProperty Name="BaseProteinContent" ColumnName="BaseProteinContent" />
                 <ScalarProperty Name="HydroxyProline" ColumnName="HydroxyProline" />

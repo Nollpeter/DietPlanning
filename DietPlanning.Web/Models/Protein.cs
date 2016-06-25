@@ -34,8 +34,7 @@ namespace DietPlanning.Web.Models
         public Nullable<double> Methionine { get; set; }
         public Nullable<double> HydroxyProline { get; set; }
         public Nullable<double> BaseProteinContent { get; set; }
-        public Nullable<int> FoodId_ { get; set; }
-        public int Id { get; set; }
+        public int FoodId_ { get; set; }
     
         public virtual Food Food { get; set; }
     }

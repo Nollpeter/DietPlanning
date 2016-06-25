@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alanine" xml:space="preserve">
+    <value>Alanine</value>
+  </data>
+  <data name="Arginine" xml:space="preserve">
+    <value>Arginine</value>
+  </data>
+  <data name="AsparticAcid" xml:space="preserve">
+    <value>Aspartic Acid</value>
+  </data>
+  <data name="BaseAlcohol" xml:space="preserve">
+    <value>Alcohol</value>
+  </data>
+  <data name="BaseAsh" xml:space="preserve">
+    <value>Ash</value>
+  </data>
+  <data name="BaseCarboHydrate" xml:space="preserve">
+    <value>Carbohydrates</value>
+  </data>
+  <data name="BaseDietaryFiber" xml:space="preserve">
+    <value>Dietary Fiber</value>
+  </data>
+  <data name="BaseFat" xml:space="preserve">
+    <value>Fat</value>
+  </data>
+  <data name="BaseMonounsaturatedFat" xml:space="preserve">
+    <value>Monounsaturated Fat</value>
+  </data>
+  <data name="BaseOmega3FattyAcids" xml:space="preserve">
+    <value>Omega 3 Fatty Acids</value>
+  </data>
+  <data name="BaseOmega6FattyAcids" xml:space="preserve">
+    <value>Omega 6 Fatty Acids</value>
+  </data>
+  <data name="BasePolyunsaturatedFat" xml:space="preserve">
+    <value>Polyunsaturated Fat</value>
+  </data>
+  <data name="BaseProteinContent" xml:space="preserve">
+    <value>Protein</value>
+  </data>
+  <data name="BaseSaturatedFat" xml:space="preserve">
+    <value>Saturated Fat</value>
+  </data>
+  <data name="BaseStarch" xml:space="preserve">
+    <value>Starch</value>
+  </data>
+  <data name="BaseSugars" xml:space="preserve">
+    <value>Sugars</value>
+  </data>
+  <data name="BaseTransFattyAcids" xml:space="preserve">
+    <value>Trans Fatty Acids</value>
+  </data>
+  <data name="BaseTransMonoenoicFatyAcids" xml:space="preserve">
+    <value>Trans Monoenoic Faty Acids</value>
+  </data>
+  <data name="BaseTransPolyenoicFatyAcids" xml:space="preserve">
+    <value>Trans Polyenoic Faty Acids</value>
+  </data>
+  <data name="BaseWater" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="Betaine" xml:space="preserve">
+    <value>Betaine</value>
+  </data>
+  <data name="Caffeine" xml:space="preserve">
+    <value>Caffeine</value>
+  </data>
+  <data name="Calcium" xml:space="preserve">
+    <value>Calcium</value>
+  </data>
+  <data name="Calories" xml:space="preserve">
+    <value>Calories</value>
+  </data>
+  <data name="Carbohydrate" xml:space="preserve">
+    <value>Carbohydrate</value>
+  </data>
+  <data name="Cholesterol" xml:space="preserve">
+    <value>Cholesterol</value>
+  </data>
+  <data name="Choline" xml:space="preserve">
+    <value>Choline</value>
+  </data>
+  <data name="Copper" xml:space="preserve">
+    <value>Copper</value>
+  </data>
+  <data name="Cystine" xml:space="preserve">
+    <value>Cystine</value>
+  </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Energy</value>
+  </data>
+  <data name="Fat" xml:space="preserve">
+    <value>Fat</value>
+  </data>
+  <data name="Fluoride" xml:space="preserve">
+    <value>Fluoride</value>
+  </data>
+  <data name="Folate" xml:space="preserve">
+    <value>Folate</value>
+  </data>
+  <data name="FolicAcid" xml:space="preserve">
+    <value>FolicAcid</value>
+  </data>
+  <data name="Fructose" xml:space="preserve">
+    <value>Fructose</value>
+  </data>
+  <data name="Galactose" xml:space="preserve">
+    <value>Galactose</value>
+  </data>
+  <data name="Glucose" xml:space="preserve">
+    <value>Glucose</value>
+  </data>
+  <data name="GlutamicAcid" xml:space="preserve">
+    <value>Glutamic Acid</value>
+  </data>
+  <data name="Glycine" xml:space="preserve">
+    <value>Glycine</value>
+  </data>
+  <data name="Histidine" xml:space="preserve">
+    <value>Histidine</value>
+  </data>
+  <data name="Hydroxiproline" xml:space="preserve">
+    <value>Hydroxiproline</value>
+  </data>
+  <data name="Iron" xml:space="preserve">
+    <value>Iron</value>
+  </data>
+  <data name="Isoleucine" xml:space="preserve">
+    <value>Isoleucine</value>
+  </data>
+  <data name="Kcal" xml:space="preserve">
+    <value>Kcal</value>
+  </data>
+  <data name="Kj" xml:space="preserve">
+    <value>Kj</value>
+  </data>
+  <data name="Lactose" xml:space="preserve">
+    <value>Lactose</value>
+  </data>
+  <data name="Leucine" xml:space="preserve">
+    <value>Leucine</value>
+  </data>
+  <data name="Lysine" xml:space="preserve">
+    <value>Lysine</value>
+  </data>
+  <data name="Magnesium" xml:space="preserve">
+    <value>Magnesium </value>
+  </data>
+  <data name="Maltose" xml:space="preserve">
+    <value>Maltose</value>
+  </data>
+  <data name="Manganese" xml:space="preserve">
+    <value>Manganese</value>
+  </data>
+  <data name="Methionine" xml:space="preserve">
+    <value>Methionine</value>
+  </data>
+  <data name="Minerals" xml:space="preserve">
+    <value>Minerals</value>
+  </data>
+  <data name="Niacin" xml:space="preserve">
+    <value>Niacin</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PantothenicAcid" xml:space="preserve">
+    <value>Pantothenic Acid</value>
+  </data>
+  <data name="Phenylalanine" xml:space="preserve">
+    <value>Phenylalanine</value>
+  </data>
+  <data name="Phosphorus" xml:space="preserve">
+    <value>Phosphorus</value>
+  </data>
+  <data name="Phytosterols" xml:space="preserve">
+    <value>Phytosterols</value>
+  </data>
+  <data name="Potassium" xml:space="preserve">
+    <value>Potassium</value>
+  </data>
+  <data name="Proline" xml:space="preserve">
+    <value>Proline</value>
+  </data>
+  <data name="Protein" xml:space="preserve">
+    <value>Protein</value>
+  </data>
+  <data name="Riboflavin" xml:space="preserve">
+    <value>Riboflavin</value>
+  </data>
+  <data name="Selenium" xml:space="preserve">
+    <value>Selenium</value>
+  </data>
+  <data name="Serine" xml:space="preserve">
+    <value>Serine</value>
+  </data>
+  <data name="Sodium" xml:space="preserve">
+    <value>Sodium</value>
+  </data>
+  <data name="Sucrose" xml:space="preserve">
+    <value>Sucrose</value>
+  </data>
+  <data name="Theobromine" xml:space="preserve">
+    <value>Theobromine</value>
+  </data>
+  <data name="Thiamin" xml:space="preserve">
+    <value>Thiamin</value>
+  </data>
+  <data name="Threonine" xml:space="preserve">
+    <value>Threonine</value>
+  </data>
+  <data name="Tryptophan" xml:space="preserve">
+    <value>Tryptophan</value>
+  </data>
+  <data name="Tyrosine" xml:space="preserve">
+    <value>Tyrosine</value>
+  </data>
+  <data name="Valine" xml:space="preserve">
+    <value>Valine</value>
+  </data>
+  <data name="VitaminA" xml:space="preserve">
+    <value>Vitamin A</value>
+  </data>
+  <data name="VitaminB12" xml:space="preserve">
+    <value>Vitamin B12</value>
+  </data>
+  <data name="VitaminB6" xml:space="preserve">
+    <value>Vitamin B6</value>
+  </data>
+  <data name="VitaminC" xml:space="preserve">
+    <value>Vitamin C</value>
+  </data>
+  <data name="VitaminD" xml:space="preserve">
+    <value>Vitamin D</value>
+  </data>
+  <data name="VitaminE" xml:space="preserve">
+    <value>Vitamin E</value>
+  </data>
+  <data name="VitaminK" xml:space="preserve">
+    <value>Vitamin K</value>
+  </data>
+  <data name="Vitamins" xml:space="preserve">
+    <value>Vitamins</value>
+  </data>
+  <data name="Zinc" xml:space="preserve">
+    <value>Zinc</value>
+  </data>
+</root>

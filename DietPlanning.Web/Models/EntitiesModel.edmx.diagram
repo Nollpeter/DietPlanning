@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="29a8f4bd0ac04aadb724fcd3310c5c29" Name="Diagram1" ZoomLevel="108">
-        <EntityTypeShape EntityType="DietPlanningModel.Carbohydrate" Width="1.5" PointX="3" PointY="16.25" />
-        <EntityTypeShape EntityType="DietPlanningModel.Energy" Width="1.5" PointX="3" PointY="30.25" />
-        <EntityTypeShape EntityType="DietPlanningModel.Fat" Width="1.5" PointX="3" PointY="6" />
-        <EntityTypeShape EntityType="DietPlanningModel.Food" Width="1.5" PointX="0.75" PointY="15.75" />
-        <EntityTypeShape EntityType="DietPlanningModel.Minerals" Width="1.5" PointX="3" PointY="25.75" />
-        <EntityTypeShape EntityType="DietPlanningModel.Other" Width="1.5" PointX="3" PointY="2.25" />
-        <EntityTypeShape EntityType="DietPlanningModel.Protein" Width="1.5" PointX="3" PointY="10.125" />
-        <EntityTypeShape EntityType="DietPlanningModel.Vitamine" Width="1.5" PointX="3" PointY="20.5" />
+        <EntityTypeShape EntityType="DietPlanningModel.Carbohydrate" Width="1.5" PointX="3" PointY="28.25" />
+        <EntityTypeShape EntityType="DietPlanningModel.Energy" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="DietPlanningModel.Fat" Width="1.5" PointX="3" PointY="24.25" />
+        <EntityTypeShape EntityType="DietPlanningModel.Food" Width="1.5" PointX="0.75" PointY="15.625" />
+        <EntityTypeShape EntityType="DietPlanningModel.Minerals" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="DietPlanningModel.Other" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="DietPlanningModel.Protein" Width="1.5" PointX="3" PointY="18.25" />
+        <EntityTypeShape EntityType="DietPlanningModel.Vitamine" Width="1.5" PointX="3" PointY="2.25" />
         <AssociationConnector Association="DietPlanningModel.Carbohydrate_Food_Id_fk" />
         <AssociationConnector Association="DietPlanningModel.Energy_Food_Id_fk" />
         <AssociationConnector Association="DietPlanningModel.Fat_Food_Id_fk" />

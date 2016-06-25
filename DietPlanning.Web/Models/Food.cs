@@ -14,12 +14,6 @@ namespace DietPlanning.Web.Models
     
     public partial class Food
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Food()
-        {
-            this.Protein = new HashSet<Protein>();
-        }
-    
         public string Name { get; set; }
         public int Id { get; set; }
         public Nullable<int> Category { get; set; }
@@ -29,8 +23,7 @@ namespace DietPlanning.Web.Models
         public virtual Fat Fat { get; set; }
         public virtual Minerals Minerals { get; set; }
         public virtual Other Other { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Protein> Protein { get; set; }
+        public virtual Protein Protein { get; set; }
         public virtual Vitamine Vitamine { get; set; }
     }
 }
