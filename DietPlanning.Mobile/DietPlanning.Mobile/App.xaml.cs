@@ -13,7 +13,7 @@ namespace DietPlanning.Mobile
         {
             InitializeComponent();
 
-            MainPage = new DietPlanning.Mobile.MainPage();
+            MainPage = new View.MainPage();
         }
 
         protected override void OnStart()

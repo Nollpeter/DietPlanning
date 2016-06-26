@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DietPlanning.Mobile.DTO
 {
-    public class NutrientDTO:IDTO
+    public interface IDTO
     {
     }
 }

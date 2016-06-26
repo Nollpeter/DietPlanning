@@ -10,15 +10,15 @@ using Newtonsoft.Json;
 
 namespace DietPlanning.Mobile.Persistence
 {
-    public class FoodPersistence
+    public class FoodPersistence:PersistenceBase
     {
-        public ProteinDTO GetTestDTO()
+        /*public ProteinDTO GetTestDTO()
         {
             HttpClient client = new HttpClient();
             var httpContent = client.GetAsync("http://192.168.0.108/api/Food/GetTestProteinDTo").Result.Content;
             try
             {
-                var readAs = httpContent.ReadAs<ProteinDTO>();
+                var readAs = httpContent.ReadAsAsync<ProteinDTO>();
                 return readAs;
             }
             catch (Exception ex)
@@ -28,14 +28,44 @@ namespace DietPlanning.Mobile.Persistence
             }
             
 
+        }*/
+
+        public async Task<FoodDTO> GetFoodByNameAsync(String name)
+        {
+            HttpResponseMessage httpResponseMessage = await Client.GetAsync($"Food/GetFoodByName/?name={name}");
+            return await httpResponseMessage.Content.ReadAsAsync<FoodDTO>();
+        }
+    }
+
+
+    public abstract class PersistenceBase
+    {
+        protected HttpClient Client { get; set; }
+
+        protected PersistenceBase()
+        {
+            Client = new HttpClient()
+            {
+                BaseAddress = new Uri("http://192.168.0.103/api/"),
+            };
         }
     }
 
     public static class Extensions
     {
-        public static T ReadAs<T>(this HttpContent content)
+        public static async Task<T> ReadAsAsync<T>(this HttpContent content)
         {
-            return JsonConvert.DeserializeObject<T>(content.ReadAsStringAsync().Result);
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(await content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.GetType().Name);
+                throw;
+            }
+            
         }
     }
 }

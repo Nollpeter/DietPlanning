@@ -9,7 +9,7 @@ using DietPlanning.Mobile.Annotations;
 
 namespace DietPlanning.Mobile.ViewModel
 {
-    class ViewModelBase:INotifyPropertyChanged
+    public class ViewModelBase:INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

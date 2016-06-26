@@ -5,11 +5,12 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using DietPlanning.Mobile.DTO;
+using DietPlanning.Web.Models.InterFaces;
 
 namespace DietPlanning.Web.Models
 {
     
-    public class Nutrient
+    public class Nutrient : IDTOConvertible
     {
         public Dictionary<String,Double?> Properties { get; set; }
 
@@ -23,7 +24,7 @@ namespace DietPlanning.Web.Models
             }
         }
 
-        public virtual T ToDTO<T>() where T: NutrientDTO, new()
+        public virtual T ToDTO<T>() where T: IDTO, new()
         {
             //NutrientDTO dto = new NutrientDTO();
             T dto = new T();

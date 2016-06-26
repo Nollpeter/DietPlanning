@@ -184,7 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Api\BaseController.cs" />
+    <Compile Include="Controllers\Api\ApiBaseController.cs" />
     <Compile Include="Controllers\Api\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +220,7 @@
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InterFaces\IDTOConvertible.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Minerals.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
@@ -228,7 +229,15 @@
     <Compile Include="Models\Other.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartialExtensions\Carbohydrate.cs" />
+    <Compile Include="Models\PartialExtensions\DietPlanningEntities.cs" />
+    <Compile Include="Models\PartialExtensions\Energy.cs" />
+    <Compile Include="Models\PartialExtensions\Fat.cs" />
+    <Compile Include="Models\PartialExtensions\Food.cs" />
+    <Compile Include="Models\PartialExtensions\Minerals.cs" />
+    <Compile Include="Models\PartialExtensions\Other.cs" />
     <Compile Include="Models\PartialExtensions\Protein.cs" />
+    <Compile Include="Models\PartialExtensions\Vitamine.cs" />
     <Compile Include="Models\Protein.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
@@ -264,6 +273,7 @@
     <Content Include="Models\EntitiesModel.edmx.diagram">
       <DependentUpon>EntitiesModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\web01.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

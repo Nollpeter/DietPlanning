@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DietPlanning.Mobile.DTO;
+using DietPlanning.Mobile.Model;
 using DietPlanning.Mobile.Persistence;
+using Xamarin.Forms;
 
 namespace DietPlanning.Mobile.ViewModel
 {
@@ -23,12 +25,56 @@ namespace DietPlanning.Mobile.ViewModel
             }
         }
 
+        public Command GetFoodCommand
+        {
+            get { return _getFoodCommand; }
+            set
+            {
+                if (Equals(value, _getFoodCommand)) return;
+                _getFoodCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public String NameToQueryString
+        {
+            get { return _nameToQueryString; }
+            set
+            {
+                if (value == _nameToQueryString) return;
+                _nameToQueryString = value;
+                OnPropertyChanged();
+            }
+        }
+
         private FoodPersistence foodPersistence;
+        private Command _getFoodCommand;
+
+        public FoodDTO CurrentFood
+        {
+            get { return _currentFood; }
+            set
+            {
+                if (Equals(value, _currentFood)) return;
+                _currentFood = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _nameToQueryString;
+        private FoodDTO _currentFood;
+        protected FoodFetchModel FoodFetchModel { get; set; }
         public MainViewModel()
         {
+            FoodFetchModel = new FoodFetchModel();
             foodPersistence = new FoodPersistence();
-            ProteinDTO dto = foodPersistence.GetTestDTO();
-            Texti = dto.ProteinContent.ToString();
+            //ProteinDTO dto = foodPersistence.GetTestDTO();
+            //Texti = dto.ProteinContent.ToString();
+            GetFoodCommand = new Command(async p =>
+            {
+                CurrentFood = await FoodFetchModel.FetchFoodByNameAsync(NameToQueryString);
+            });
         }
+        
     }
 }
