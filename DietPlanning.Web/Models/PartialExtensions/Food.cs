@@ -1,5 +1,5 @@
 ﻿using System;
-using DietPlanning.Mobile.DTO;
+using DietPlanning.Portable.DTO;
 using DietPlanning.Web.Models.InterFaces;
 
 namespace DietPlanning.Web.Models

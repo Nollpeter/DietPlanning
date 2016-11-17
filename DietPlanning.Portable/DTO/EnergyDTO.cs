@@ -1,4 +1,4 @@
-﻿namespace DietPlanning.Mobile.DTO
+﻿namespace DietPlanning.Portable.DTO
 {
     public class EnergyDTO : NutrientDTO
     {

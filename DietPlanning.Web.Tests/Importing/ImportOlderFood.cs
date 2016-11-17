@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using DietPlanning.Mobile.DTO;
 using DietPlanning.Web.Models;
 using DietPlanning.Model.Food;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

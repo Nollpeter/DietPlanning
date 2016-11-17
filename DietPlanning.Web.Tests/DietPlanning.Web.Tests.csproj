@@ -153,6 +153,10 @@
       <Project>{3aff6de5-2749-407e-80df-5cc254d37f7f}</Project>
       <Name>DietPlanning.OldModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DietPlanning.Portable\DietPlanning.Portable.csproj">
+      <Project>{39DE6D28-A321-46FF-BFBD-AAF2070723B6}</Project>
+      <Name>DietPlanning.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DietPlanning.Web\DietPlanning.Web.csproj">
       <Project>{1B25B82B-ED71-4AB3-95C5-D131CAA7E5DA}</Project>
       <Name>DietPlanning.Web</Name>

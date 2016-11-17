@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Web;
-using DietPlanning.Mobile.DTO;
+using DietPlanning.Portable.DTO;
 using DietPlanning.Web.Models.InterFaces;
 
 namespace DietPlanning.Web.Models

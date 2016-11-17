@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using DietPlanning.Mobile.DTO;
+using DietPlanning.Portable.DTO;
 using Newtonsoft.Json;
 
 namespace DietPlanning.Mobile.Persistence
@@ -46,7 +46,8 @@ namespace DietPlanning.Mobile.Persistence
         {
             Client = new HttpClient()
             {
-                BaseAddress = new Uri("http://192.168.0.103/api/"),
+             //   BaseAddress = new Uri("http://192.168.0.103/api/"),
+                    BaseAddress = new Uri("http://project.diet/api")
             };
         }
     }

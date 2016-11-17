@@ -8,9 +8,10 @@
   <ContentPage.BindingContext>
     <viewModel:MasterPageViewModel></viewModel:MasterPageViewModel>
   </ContentPage.BindingContext>
+  
   <ContentPage.Content>
     <StackLayout VerticalOptions="FillAndExpand">
-      <ListView x:Name="listView" ItemsSource="{Binding Fields}" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+      <ListView x:Name="ListView" ItemsSource="{Binding Fields}" SelectedItem="{Binding SelectedPage}"  VerticalOptions="FillAndExpand" SeparatorVisibility="None">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DietPlanning.Mobile.DTO;
+using DietPlanning.Portable.DTO;
 
 namespace DietPlanning.Web.Models.InterFaces
 {

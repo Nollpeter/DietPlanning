@@ -12,6 +12,7 @@ namespace DietPlanning.Mobile.ViewModel
     public class MasterPageViewModel: ViewModelBase
     {
         private ObservableCollection<MasterPageField> _fields;
+        private MasterPageField _selectedPage;
 
         public ObservableCollection<MasterPageField> Fields
         {
@@ -24,6 +25,20 @@ namespace DietPlanning.Mobile.ViewModel
             }
         }
 
+        public MasterPageField SelectedPage
+        {
+            get { return _selectedPage; }
+            set
+            {
+                if (Equals(value, _selectedPage)) return;
+                _selectedPage = value;
+                OnPropertyChanged();
+                OnSelectedMasterPageFieldChanged(new MasterPageFieldChangedEventArgs() {Field = SelectedPage});
+            }
+        }
+
+        public event EventHandler<MasterPageFieldChangedEventArgs> SelectedMasterPageFieldChanged; 
+
         public MasterPageViewModel()
         {
             Fields = new ObservableCollection<MasterPageField>();
@@ -31,15 +46,28 @@ namespace DietPlanning.Mobile.ViewModel
             {
                 Title = "Contacts",
                 IconSource = "contacts.png",
-                TargetType = typeof(ContactsPage)
+                TargetType = typeof(ContactsPage),
+                Instance = new ContactsPage()
+
             });
             Fields.Add(new MasterPageField
             {
                 Title = "Search",
                 IconSource = "todo.png",
                 TargetType = typeof(SearchPage)
+                ,Instance = new SearchPage()
             });
            
         }
+
+        protected virtual void OnSelectedMasterPageFieldChanged(MasterPageFieldChangedEventArgs e)
+        {
+            SelectedMasterPageFieldChanged?.Invoke(this, e);
+        }
+    }
+
+    public class MasterPageFieldChangedEventArgs : EventArgs
+    {
+        public MasterPageField Field { get; set; }
     }
 }

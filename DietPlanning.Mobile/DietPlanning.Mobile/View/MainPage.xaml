@@ -2,15 +2,18 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
 				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 				  xmlns:view="clr-namespace:DietPlanning.Mobile.View;assembly=DietPlanning.Mobile"
+				  xmlns:viewModel="clr-namespace:DietPlanning.Mobile.ViewModel;assembly=DietPlanning.Mobile"
 				  x:Class="DietPlanning.Mobile.View.MainPage">
   <MasterDetailPage.Master>
     <view:MasterPage />
 </MasterDetailPage.Master>
+  <MasterDetailPage.BindingContext>
+    <viewModel:MasterDetailViewModel></viewModel:MasterDetailViewModel>
+  </MasterDetailPage.BindingContext>
+  
   <MasterDetailPage.Detail>
-   <NavigationPage>
-			<x:Arguments>
-				<view:SearchPage />
-			</x:Arguments>
-		</NavigationPage>
+   <!-- <NavigationPage><x:Arguments><view:SearchPage></view:SearchPage></x:Arguments> </NavigationPage>-->
+    <Binding Path="SelectedPage"></Binding>
+   
   </MasterDetailPage.Detail>
 </MasterDetailPage>

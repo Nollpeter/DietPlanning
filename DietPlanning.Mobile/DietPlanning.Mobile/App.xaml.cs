@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using DietPlanning.Mobile.ViewModel;
 using Xamarin.Forms;
 
 namespace DietPlanning.Mobile
@@ -14,6 +14,8 @@ namespace DietPlanning.Mobile
             InitializeComponent();
 
             MainPage = new View.MainPage();
+           // MainPage.BindingContext = new MasterDetailViewModel();
+            
         }
 
         protected override void OnStart()

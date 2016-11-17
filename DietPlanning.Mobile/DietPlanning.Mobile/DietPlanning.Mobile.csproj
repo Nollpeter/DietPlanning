@@ -38,17 +38,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DTO\CarbDTO.cs" />
-    <Compile Include="DTO\EnergyDTO.cs" />
-    <Compile Include="DTO\FatDTO.cs" />
-    <Compile Include="DTO\FoodDTO.cs" />
-    <Compile Include="DTO\IDTO.cs" />
-    <Compile Include="DTO\MineralsDTO.cs" />
-    <Compile Include="DTO\NutrientDTO.cs" />
-    <Compile Include="DTO\OtherDTO.cs" />
-    <Compile Include="DTO\ProteinDTO.cs" />
-    <Compile Include="DTO\VitaminDTO.cs" />
     <Compile Include="ViewModel\FieldTypes\MasterPageField.cs" />
+    <Compile Include="ViewModel\MasterDetailViewModel.cs" />
     <Compile Include="ViewModel\MasterPageViewModel.cs" />
     <Compile Include="View\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
@@ -60,9 +51,9 @@
     <Compile Include="Persistence\FoodPersistence.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\BaseClasses\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\BaseClasses\ViewModelBase.cs" />
     <Compile Include="View\MasterPage.xaml.cs">
       <DependentUpon>MasterPage.xaml</DependentUpon>
     </Compile>
@@ -121,6 +112,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DietPlanning.Portable\DietPlanning.Portable.csproj">
+      <Project>{39de6d28-a321-46ff-bfbd-aaf2070723b6}</Project>
+      <Name>DietPlanning.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.0.49\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.0.49\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

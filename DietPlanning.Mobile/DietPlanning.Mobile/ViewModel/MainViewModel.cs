@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DietPlanning.Mobile.DTO;
 using DietPlanning.Mobile.Model;
 using DietPlanning.Mobile.Persistence;
+using DietPlanning.Portable.DTO;
 using Xamarin.Forms;
 
 namespace DietPlanning.Mobile.ViewModel

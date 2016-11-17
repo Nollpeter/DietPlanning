@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DietPlanning.Mobile.DTO;
 using DietPlanning.Mobile.Persistence;
+using DietPlanning.Portable.DTO;
 
 namespace DietPlanning.Mobile.Model
 {
@@ -16,7 +16,7 @@ namespace DietPlanning.Mobile.Model
         }
 
         protected FoodPersistence Persistence { get; set; }
-        public async Task<FoodDTO> FetchFoodByNameAsync(String name)
+        public async Task<DietPlanning.Portable.DTO.FoodDTO> FetchFoodByNameAsync(String name)
         {
             return await Persistence.GetFoodByNameAsync(name);
         }

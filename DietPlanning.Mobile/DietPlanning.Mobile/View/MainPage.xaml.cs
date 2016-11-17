@@ -12,6 +12,7 @@ namespace DietPlanning.Mobile.View
         public MainPage()
         {
             InitializeComponent();
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using DietPlanning.Mobile.DTO;
+using DietPlanning.Portable.DTO;
 using DietPlanning.Web.Controllers.Api;
 
 namespace DietPlanning.Web.Controllers
