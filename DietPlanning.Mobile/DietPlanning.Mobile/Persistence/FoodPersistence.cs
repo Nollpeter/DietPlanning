@@ -30,6 +30,8 @@ namespace DietPlanning.Mobile.Persistence
 
         }*/
 
+
+
         public async Task<FoodDTO> GetFoodByNameAsync(String name)
         {
             HttpResponseMessage httpResponseMessage = await Client.GetAsync($"Food/GetFoodByName/?name={name}");
