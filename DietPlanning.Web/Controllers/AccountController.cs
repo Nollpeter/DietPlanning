@@ -58,6 +58,7 @@ namespace DietPlanning.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            //I really fucking love Jetbrains
             return View();
         }
 
